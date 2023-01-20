@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.Linq;
 namespace Intersys
 {
     public class Utils
@@ -20,27 +20,23 @@ namespace Intersys
         public static int[] ReadIntTable(char separator, string errorMessage = "Wrong input format")
         {
             bool success = false;
-            int[] numbers = null;
             while (!success)
             {
-                string? input = Console.ReadLine();
-                if (input == null) { success = false; continue; }
-
-                string[] numberStrings = input.Split(separator);
-                numbers = new int[numberStrings.Length];
-
-                int i = 0;
-                foreach (string s in numberStrings)
+                try
                 {
-                    success = int.TryParse(s, out numbers[i++]);
-                    if (!success)
-                    {
-                        Console.WriteLine(errorMessage);
-                        break;
-                    }
+                    return Console.ReadLine()
+                    .Split(separator)
+                    .Select(s => int.Parse(s))
+                    .ToArray();
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine(errorMessage);
+                    success = false;
+                    continue;
                 }
             }
-            return numbers;
+            return null;          
         }
         public static void Reverse<T>(T[] array)
         {
