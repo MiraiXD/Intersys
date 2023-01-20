@@ -7,7 +7,7 @@ namespace Intersys
 {
     public class Utils
     {
-        public static int ReadInt(string errorMessage = "It's not a number")
+        public static int ReadInt(string errorMessage = "Wrong input format")
         {
             int i;
             while (!int.TryParse(Console.ReadLine(), out i))
@@ -16,6 +16,31 @@ namespace Intersys
             }
 
             return i;
+        }
+        public static int[] ReadIntTable(char separator, string errorMessage = "Wrong input format")
+        {
+            bool success = false;
+            int[] numbers = null;
+            while (!success)
+            {
+                string? input = Console.ReadLine();
+                if (input == null) { success = false; continue; }
+
+                string[] numberStrings = input.Split(separator);
+                numbers = new int[numberStrings.Length];
+
+                int i = 0;
+                foreach (string s in numberStrings)
+                {
+                    success = int.TryParse(s, out numbers[i++]);
+                    if (!success)
+                    {
+                        Console.WriteLine(errorMessage);
+                        break;
+                    }
+                }
+            }
+            return numbers;
         }
         public static void Reverse<T>(T[] array)
         {
