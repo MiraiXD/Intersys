@@ -10,12 +10,12 @@ namespace Intersys
         public ReverseArray()
         {
             Console.WriteLine("Specify size of the array and press enter:");
-            int length = Utils.ReadInt();
+            int length = Utils.Read<int>(int.Parse);
             int[] input = new int[length];
             for (int i = 0; i < length; i++)
             {
                 Console.WriteLine($"Specify element {i}/{length} of the array and press enter:");
-                input[i] = Utils.ReadInt();
+                input[i] = Utils.Read<int>(int.Parse);
             }
 
             // Reverse the input array

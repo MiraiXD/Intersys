@@ -10,9 +10,10 @@ namespace Intersys
         public PermutationCheck()
         {
             Console.WriteLine("Specify first table of integers separated by a space and press enter");
-            int[] t1 = Utils.ReadIntTable(' ');
+            //int[] t1 = Utils.ReadIntTable(' ');
+            int[] t1 = Utils.ReadTable<int>(' ', int.Parse);
             Console.WriteLine("Specify second table of integers separated by a space and press enter");
-            int[] t2 = Utils.ReadIntTable(' ');
+            int[] t2 = Utils.ReadTable<int>(' ', int.Parse);
 
             Array.Sort(t1);
             Array.Sort(t2);
