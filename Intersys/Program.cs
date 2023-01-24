@@ -13,6 +13,7 @@ class Program
             Console.WriteLine("4. Existing Powers Of Two");
             Console.WriteLine("5. Finding Primes");
             Console.WriteLine("6. Common Digit");
+            Console.WriteLine("7. Digit Sum");
             Console.WriteLine("9. Exit");
             Console.WriteLine("Choose operation:");
             int operationID = Utils.Read<int>(int.Parse);
@@ -22,6 +23,7 @@ class Program
             else if(operationID == 4) new ExistingPowersOfTwo();
             else if(operationID == 5) new FindingPrimes();
             else if(operationID == 6) new CommonDigit();
+            else if(operationID == 7) new DigitSum();
             else if (operationID == 9) break;
 
             Console.WriteLine();
